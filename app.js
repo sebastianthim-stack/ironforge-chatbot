@@ -157,18 +157,30 @@ const TOOL_IMPL = {
 // ---------------------------------------------------------------------------
 
 async function callGemini(contents) {
-  const res = await fetch(GEMINI_URL, {
+  const payload = {
+    systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+    contents,
+    tools: [{ functionDeclarations: TOOL_DECLS }],
+    generationConfig: { temperature: 0.4, maxOutputTokens: 2048 }
+  };
+  let url;
+  const headers = { "Content-Type": "application/json" };
+  if (CFG.PROXY_URL) {
+    // Through the Cloudflare Worker proxy - the API key never leaves the server.
+    url = CFG.PROXY_URL;
+    payload.model = CFG.MODEL;
+  } else {
+    if (!CFG.API_KEY || CFG.API_KEY.includes("PASTE_"))
+      throw new Error("NO_KEY");
+    url = GEMINI_URL;
+  }
+  const res = await fetch(url, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-      contents,
-      tools: [{ functionDeclarations: TOOL_DECLS }],
-      generationConfig: { temperature: 0.4, maxOutputTokens: 2048 }
-    })
+    headers,
+    body: JSON.stringify(payload)
   });
   if (res.status === 429) throw new Error("RATE_LIMIT");
-  if (res.status === 400 && CFG.API_KEY.includes("PASTE_"))
+  if (res.status === 400 && !CFG.PROXY_URL && CFG.API_KEY.includes("PASTE_"))
     throw new Error("NO_KEY");
   if (!res.ok) {
     let body = "";
@@ -305,7 +317,7 @@ async function send() {
     if (err.message === "RATE_LIMIT")
       msg = "The model is rate-limited (free tier quota). Wait a few seconds and try again.";
     else if (err.message === "NO_KEY")
-      msg = "No Gemini API key set. Open config.js and paste your key, then redeploy.";
+      msg = "No model connection configured. Add a Cloudflare Worker proxy URL in config.js (see CLOUDFLARE_SETUP.md).";
     else if (err.message === "SAFETY")
       msg = "The model blocked that request as unsafe.";
     else msg += " (" + escapeHtml(err.message) + ")";
