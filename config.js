@@ -1,7 +1,7 @@
 window.CONFIG = {
   // 1) Paste your Google Gemini API key here (aistudio.google.com/apikey -> Create API key).
   //    Free tier is fine. This value ships inside the deployed page, so use a throwaway key.
-  API_KEY: "AQ.Ab8RN6KiiwKVsUavok5ZG1ktttbKirpjXB9KFCDrCBvI5Eyneg",
+  API_KEY: "AQ.Ab8RN6I-TQ0e3XCag4nCxJ15RLCTodb5VHz1jSD1HC29iWFk3A",
 
   // 2) Model: current free-tier model that supports tool calling.
   MODEL: "gemini-3.5-flash",
