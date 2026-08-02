@@ -3,7 +3,7 @@ window.CONFIG = {
   //    the Worker as a secret, so it never appears in this repo or the page.
   //    Example: "https://ironforge-gemini.YOUR_ACCOUNT.workers.dev"
   //    Leave empty ("") to call Gemini directly with API_KEY below (local dev only).
-  PROXY_URL: "",
+  PROXY_URL: "https://ironforge-chatbot.sebastianthim.workers.dev/",
 
   // 2) Direct Gemini API key. Only used if PROXY_URL is empty. Keep it out of
   //    the public repo - Google disables keys it finds publicly (leak detection).
