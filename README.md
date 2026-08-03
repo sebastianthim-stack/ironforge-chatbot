@@ -49,7 +49,8 @@ GitHub will refuse to push `config.js` because it contains an API key (this is e
 | 3 — traps | `Is the pillow block bearing IF-1704 available this week?` | Out of stock + notes 50% offer |
 | 4 — second tool | `Is it a good time to run my CNC batch today and why?` | Live grid gCO₂/kWh + index + advice |
 | 4 — bonus | `I need the gear blank IF-1503 — is it in stock, and is the grid clean right now to run it when it arrives?` | Combines catalogue + grid in one reply |
-| 4 — energy cost | `Is electricity cheap right now?` / `How much is my team spending on energy?` | Explains it can't see IronForge's bills, gives today's grid figure + when power is cheapest, and cross-references energyelephant.com (Smart Energy Traffic Light) |
+| 4 — energy cost | `Should I switch energy suppliers to save money?` / `How much is my team spending on energy?` | Explains it can't see IronForge's bills; describes how EnergyElephant works (auto-imports bills from supplier portals, validates rates vs market, flags contract expiry, supplier-agnostic) and gives today's grid figure + when power is cheapest |
+| 4 — machinery | `How can I cut the energy bill from my CNC and ovens?` | Ties energy-hungry consuming machinery (CNC/ovens/welders) and on-site generation (solar/wind) to the live grid data, with sub-metering advice |
 
 ## Keep it live
 
