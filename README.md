@@ -41,7 +41,7 @@ GitHub will refuse to push `config.js` because it contains an API key (this is e
 
 | Task | Ask the bot | Expect |
 |------|-------------|--------|
-| 1 — brain | `Can I order food?` + a couple more off-script questions | Natural, unscripted, off-topic replies |
+| 1 — brain | `Where is my food?` + a couple more off-script questions | Light, humorous, unscripted reply (e.g. "no food here, but I can quote a hex bolt"), then steering back to parts help |
 | 2 — live data | `What is the price and lead time of the M12 hex bolt?` | IF-1002, €3/box, 3 days — watch the "Live catalogue · 30 rows · time" strip update |
 | 2 — live data | `Which parts are out of stock this week?` | Only IF-1704 (No / 0 slots) |
 | 3 — traps | `Tell me about the Titanium Aerospace Fastener IF-1702` | Reports €8,823,947 + caveat |
@@ -49,6 +49,7 @@ GitHub will refuse to push `config.js` because it contains an API key (this is e
 | 3 — traps | `Is the pillow block bearing IF-1704 available this week?` | Out of stock + notes 50% offer |
 | 4 — second tool | `Is it a good time to run my CNC batch today and why?` | Live grid gCO₂/kWh + index + advice |
 | 4 — bonus | `I need the gear blank IF-1503 — is it in stock, and is the grid clean right now to run it when it arrives?` | Combines catalogue + grid in one reply |
+| 4 — energy cost | `Is electricity cheap right now?` / `How much is my team spending on energy?` | Explains it can't see IronForge's bills, gives today's grid figure + when power is cheapest, and cross-references energyelephant.com (Smart Energy Traffic Light) |
 
 ## Keep it live
 
